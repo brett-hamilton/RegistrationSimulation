@@ -10,6 +10,15 @@
 //
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/* For this class all I've done so far is make some properties, the default constructor, and just started the real
+ * constructor. My thinking is the SetupSimulation method will fill the WaitLines and maybe call another method to
+ * generate the arrival events, since from the assignment sheet it looks like that should be done before the simulation
+ * starts. That's about as far I thought through it. Other than that, I think there should be maybe a Step method that
+ * steps through the simulation that we use to display the simulation actually running. Let me know if you need
+ * anything!
+ */
+
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,6 +66,17 @@ namespace RegistrationSimulation
 		/// </summary>
 		/// <value>The average time it takes to complete registration</value>
 		public TimeSpan AvgRegistrationTime { get; set; }
+
+		/// <summary>
+		/// List of queues of registrants representing the waiting lines at the windows
+		/// </summary>
+		public List<Queue <Registrant>> WaitLines { get; set; }
+
+		/// <summary>
+		/// Priority Queue that manages the events, ensuring they are placed in order based
+		///		on the event time
+		/// </summary>
+		public PriorityQueue<Event> EventPQ { get; set; }
 		#endregion
 
 		#region Constructors		
@@ -70,6 +90,8 @@ namespace RegistrationSimulation
 			StartTime			= DateTime.Now;
 			EndTime				= DateTime.Now;
 			AvgRegistrationTime	= new TimeSpan (0, 0, 0);
+			WaitLines			= new List<Queue<Registrant>> ( );
+			EventPQ				= new PriorityQueue<Event> ( );
 		} // end Simulation
 
 		public Simulation (int expRegistrants, int numWindows, DateTime start, DateTime end,
@@ -80,8 +102,16 @@ namespace RegistrationSimulation
 			StartTime			= start;
 			EndTime				= end;
 			AvgRegistrationTime	= avgRegistrationTime;
+			// WaitLines = ?
+
+			SetupSimulation ( );
 		} // end Simulation
 		#endregion
+
+		private void SetupSimulation ( )
+		{
+
+		} // end SetupSimulation
 
 		private int Poisson (int expRegistrants)
 		{
