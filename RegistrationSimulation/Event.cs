@@ -32,11 +32,13 @@ namespace RegistrationSimulation
 		/// </summary>
 		/// <value>Either arrival or departure</value>
 		public EventType Type { get; set; }
+
 		/// <summary>
 		/// Gets or sets the time of the event
 		/// </summary>
 		/// <value>The time of the event</value>
 		public DateTime Time { get; set; }
+
 		/// <summary>
 		/// Gets or sets the registrant associated with the event
 		/// </summary>
@@ -50,9 +52,9 @@ namespace RegistrationSimulation
 		/// </summary>
 		public Event ( )
 		{
-			Type = EventType.ARRIVAL;
-			Time = DateTime.Now;
-			Registrant = null;
+			Type		= EventType.ARRIVAL;
+			Time		= DateTime.Now;
+			Registrant	= null;
 		} // end Event
 
 		/// <summary>
@@ -60,12 +62,11 @@ namespace RegistrationSimulation
 		/// </summary>
 		/// <param name="type">The type of event, either an arrival and a departure</param>
 		/// <param name="time">The time of the event</param>
-		/// <param name="registrant">The registrant associated with the event</param>
-		public Event (EventType type, DateTime time, Registrant registrant)
+		public Event (EventType type, DateTime time)
 		{
 			Type		= type;
 			Time		= time;
-			Registrant	= registrant;
+			Registrant	= null;
 		} // end Event
 		#endregion
 

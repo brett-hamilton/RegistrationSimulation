@@ -29,7 +29,7 @@ namespace RegistrationSimulation
 		{
 			Application.EnableVisualStyles ( );
 			Application.SetCompatibleTextRenderingDefault (false);
-			Application.Run (new SimulationForm ( ));
+			Application.Run (new SettingsForm ( ));
 		} // end Main
 	} // end SimulationDriver
 }

@@ -28,241 +28,284 @@
 		/// </summary>
 		private void InitializeComponent ( )
 		{
-			this.labelOpeningTime = new System.Windows.Forms.Label();
-			this.labelClosingTime = new System.Windows.Forms.Label();
-			this.labelExpNumRegistrants = new System.Windows.Forms.Label();
-			this.labelNumWindows = new System.Windows.Forms.Label();
-			this.labelAvgWaitTime = new System.Windows.Forms.Label();
-			this.tbExpNumRegistrants = new System.Windows.Forms.TextBox();
-			this.tbNumWindows = new System.Windows.Forms.TextBox();
+			this.panelSimulation = new System.Windows.Forms.Panel();
+			this.panelStats = new System.Windows.Forms.Panel();
+			this.tbSimulationOutput = new System.Windows.Forms.TextBox();
+			this.panelTitle = new System.Windows.Forms.Panel();
 			this.labelTitle = new System.Windows.Forms.Label();
-			this.dateTimePickerOpen = new System.Windows.Forms.DateTimePicker();
-			this.dateTimePickerClose = new System.Windows.Forms.DateTimePicker();
-			this.numericUpDownMin = new System.Windows.Forms.NumericUpDown();
-			this.labelMinutes = new System.Windows.Forms.Label();
-			this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
-			this.labelSeconds = new System.Windows.Forms.Label();
-			this.btnSimulate = new System.Windows.Forms.Button();
-			this.btnExit = new System.Windows.Forms.Button();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDownMin)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+			this.labelLongestQueue = new System.Windows.Forms.Label();
+			this.labelNumEvents = new System.Windows.Forms.Label();
+			this.labelNumArrivals = new System.Windows.Forms.Label();
+			this.labelNumDepartures = new System.Windows.Forms.Label();
+			this.tbLongestQueue = new System.Windows.Forms.TextBox();
+			this.tbNumEvents = new System.Windows.Forms.TextBox();
+			this.tbNumArrivals = new System.Windows.Forms.TextBox();
+			this.tbNumDepartures = new System.Windows.Forms.TextBox();
+			this.labelMinWait = new System.Windows.Forms.Label();
+			this.tbMinWait = new System.Windows.Forms.TextBox();
+			this.labelMaxWait = new System.Windows.Forms.Label();
+			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.labelAvgWait = new System.Windows.Forms.Label();
+			this.panelSimulation.SuspendLayout();
+			this.panelStats.SuspendLayout();
+			this.panelTitle.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// labelOpeningTime
+			// panelSimulation
 			// 
-			this.labelOpeningTime.AutoSize = true;
-			this.labelOpeningTime.Location = new System.Drawing.Point(203, 83);
-			this.labelOpeningTime.Name = "labelOpeningTime";
-			this.labelOpeningTime.Size = new System.Drawing.Size(183, 19);
-			this.labelOpeningTime.TabIndex = 0;
-			this.labelOpeningTime.Text = "Registration Opening Time";
+			this.panelSimulation.BackColor = System.Drawing.SystemColors.Control;
+			this.panelSimulation.Controls.Add(this.tbSimulationOutput);
+			this.panelSimulation.Controls.Add(this.panelTitle);
+			this.panelSimulation.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.panelSimulation.Location = new System.Drawing.Point(0, 0);
+			this.panelSimulation.Name = "panelSimulation";
+			this.panelSimulation.Size = new System.Drawing.Size(912, 350);
+			this.panelSimulation.TabIndex = 0;
 			// 
-			// labelClosingTime
+			// panelStats
 			// 
-			this.labelClosingTime.AutoSize = true;
-			this.labelClosingTime.Location = new System.Drawing.Point(212, 120);
-			this.labelClosingTime.Name = "labelClosingTime";
-			this.labelClosingTime.Size = new System.Drawing.Size(176, 19);
-			this.labelClosingTime.TabIndex = 0;
-			this.labelClosingTime.Text = "Registration Closing Time";
+			this.panelStats.BackColor = System.Drawing.SystemColors.Control;
+			this.panelStats.Controls.Add(this.textBox1);
+			this.panelStats.Controls.Add(this.tbNumDepartures);
+			this.panelStats.Controls.Add(this.tbNumArrivals);
+			this.panelStats.Controls.Add(this.tbMinWait);
+			this.panelStats.Controls.Add(this.tbNumEvents);
+			this.panelStats.Controls.Add(this.tbLongestQueue);
+			this.panelStats.Controls.Add(this.labelNumDepartures);
+			this.panelStats.Controls.Add(this.labelNumArrivals);
+			this.panelStats.Controls.Add(this.labelMaxWait);
+			this.panelStats.Controls.Add(this.labelAvgWait);
+			this.panelStats.Controls.Add(this.labelMinWait);
+			this.panelStats.Controls.Add(this.labelNumEvents);
+			this.panelStats.Controls.Add(this.labelLongestQueue);
+			this.panelStats.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.panelStats.Location = new System.Drawing.Point(0, 350);
+			this.panelStats.Name = "panelStats";
+			this.panelStats.Size = new System.Drawing.Size(912, 108);
+			this.panelStats.TabIndex = 0;
 			// 
-			// labelExpNumRegistrants
+			// tbSimulationOutput
 			// 
-			this.labelExpNumRegistrants.AutoSize = true;
-			this.labelExpNumRegistrants.Location = new System.Drawing.Point(168, 194);
-			this.labelExpNumRegistrants.Name = "labelExpNumRegistrants";
-			this.labelExpNumRegistrants.Size = new System.Drawing.Size(218, 19);
-			this.labelExpNumRegistrants.TabIndex = 0;
-			this.labelExpNumRegistrants.Text = "Expected Number of Registrants";
+			this.tbSimulationOutput.BackColor = System.Drawing.SystemColors.Info;
+			this.tbSimulationOutput.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tbSimulationOutput.Location = new System.Drawing.Point(0, 58);
+			this.tbSimulationOutput.Multiline = true;
+			this.tbSimulationOutput.Name = "tbSimulationOutput";
+			this.tbSimulationOutput.ReadOnly = true;
+			this.tbSimulationOutput.Size = new System.Drawing.Size(912, 292);
+			this.tbSimulationOutput.TabIndex = 0;
 			// 
-			// labelNumWindows
+			// panelTitle
 			// 
-			this.labelNumWindows.AutoSize = true;
-			this.labelNumWindows.Location = new System.Drawing.Point(123, 231);
-			this.labelNumWindows.Name = "labelNumWindows";
-			this.labelNumWindows.Size = new System.Drawing.Size(263, 19);
-			this.labelNumWindows.TabIndex = 0;
-			this.labelNumWindows.Text = "Number of Registration Windows Open";
-			// 
-			// labelAvgWaitTime
-			// 
-			this.labelAvgWaitTime.AutoSize = true;
-			this.labelAvgWaitTime.Location = new System.Drawing.Point(64, 157);
-			this.labelAvgWaitTime.Name = "labelAvgWaitTime";
-			this.labelAvgWaitTime.Size = new System.Drawing.Size(322, 19);
-			this.labelAvgWaitTime.TabIndex = 0;
-			this.labelAvgWaitTime.Text = "Expected Average Registration Process Duration";
-			// 
-			// tbExpNumRegistrants
-			// 
-			this.tbExpNumRegistrants.Location = new System.Drawing.Point(445, 190);
-			this.tbExpNumRegistrants.Name = "tbExpNumRegistrants";
-			this.tbExpNumRegistrants.Size = new System.Drawing.Size(250, 27);
-			this.tbExpNumRegistrants.TabIndex = 1;
-			this.tbExpNumRegistrants.Text = "1000";
-			this.tbExpNumRegistrants.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			// 
-			// tbNumWindows
-			// 
-			this.tbNumWindows.Location = new System.Drawing.Point(445, 227);
-			this.tbNumWindows.Name = "tbNumWindows";
-			this.tbNumWindows.Size = new System.Drawing.Size(250, 27);
-			this.tbNumWindows.TabIndex = 1;
-			this.tbNumWindows.Text = "6";
-			this.tbNumWindows.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.panelTitle.Controls.Add(this.labelTitle);
+			this.panelTitle.Dock = System.Windows.Forms.DockStyle.Top;
+			this.panelTitle.Location = new System.Drawing.Point(0, 0);
+			this.panelTitle.Name = "panelTitle";
+			this.panelTitle.Size = new System.Drawing.Size(912, 58);
+			this.panelTitle.TabIndex = 1;
 			// 
 			// labelTitle
 			// 
+			this.labelTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
 			this.labelTitle.AutoSize = true;
 			this.labelTitle.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.labelTitle.ForeColor = System.Drawing.Color.IndianRed;
-			this.labelTitle.Location = new System.Drawing.Point(196, 32);
+			this.labelTitle.Location = new System.Drawing.Point(273, 15);
 			this.labelTitle.Name = "labelTitle";
 			this.labelTitle.Size = new System.Drawing.Size(367, 29);
-			this.labelTitle.TabIndex = 2;
+			this.labelTitle.TabIndex = 3;
 			this.labelTitle.Text = "Convention Registration Simulation";
 			// 
-			// dateTimePickerOpen
+			// labelLongestQueue
 			// 
-			this.dateTimePickerOpen.CustomFormat = "hh : mm tt";
-			this.dateTimePickerOpen.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.dateTimePickerOpen.Location = new System.Drawing.Point(445, 79);
-			this.dateTimePickerOpen.Name = "dateTimePickerOpen";
-			this.dateTimePickerOpen.ShowUpDown = true;
-			this.dateTimePickerOpen.Size = new System.Drawing.Size(250, 27);
-			this.dateTimePickerOpen.TabIndex = 7;
-			this.dateTimePickerOpen.Value = new System.DateTime(2019, 11, 18, 8, 0, 0, 0);
+			this.labelLongestQueue.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.labelLongestQueue.AutoSize = true;
+			this.labelLongestQueue.Location = new System.Drawing.Point(137, 7);
+			this.labelLongestQueue.Name = "labelLongestQueue";
+			this.labelLongestQueue.Size = new System.Drawing.Size(272, 16);
+			this.labelLongestQueue.TabIndex = 0;
+			this.labelLongestQueue.Text = "Longest Queue Encountered So Far:";
 			// 
-			// dateTimePickerClose
+			// labelNumEvents
 			// 
-			this.dateTimePickerClose.CustomFormat = "hh : mm tt";
-			this.dateTimePickerClose.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.dateTimePickerClose.Location = new System.Drawing.Point(445, 116);
-			this.dateTimePickerClose.Name = "dateTimePickerClose";
-			this.dateTimePickerClose.ShowUpDown = true;
-			this.dateTimePickerClose.Size = new System.Drawing.Size(250, 27);
-			this.dateTimePickerClose.TabIndex = 7;
-			this.dateTimePickerClose.Value = new System.DateTime(2019, 11, 18, 18, 0, 0, 0);
+			this.labelNumEvents.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.labelNumEvents.AutoSize = true;
+			this.labelNumEvents.Location = new System.Drawing.Point(209, 33);
+			this.labelNumEvents.Name = "labelNumEvents";
+			this.labelNumEvents.Size = new System.Drawing.Size(200, 16);
+			this.labelNumEvents.TabIndex = 0;
+			this.labelNumEvents.Text = "Events Processed So Far:";
 			// 
-			// numericUpDownMin
+			// labelNumArrivals
 			// 
-			this.numericUpDownMin.Location = new System.Drawing.Point(445, 153);
-			this.numericUpDownMin.Name = "numericUpDownMin";
-			this.numericUpDownMin.Size = new System.Drawing.Size(54, 27);
-			this.numericUpDownMin.TabIndex = 8;
-			this.numericUpDownMin.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			this.numericUpDownMin.Value = new decimal(new int[] {
-            4,
-            0,
-            0,
-            0});
+			this.labelNumArrivals.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.labelNumArrivals.AutoSize = true;
+			this.labelNumArrivals.Location = new System.Drawing.Point(621, 7);
+			this.labelNumArrivals.Name = "labelNumArrivals";
+			this.labelNumArrivals.Size = new System.Drawing.Size(80, 16);
+			this.labelNumArrivals.TabIndex = 0;
+			this.labelNumArrivals.Text = "Arrivals:";
 			// 
-			// labelMinutes
+			// labelNumDepartures
 			// 
-			this.labelMinutes.AutoSize = true;
-			this.labelMinutes.Location = new System.Drawing.Point(505, 157);
-			this.labelMinutes.Name = "labelMinutes";
-			this.labelMinutes.Size = new System.Drawing.Size(62, 19);
-			this.labelMinutes.TabIndex = 9;
-			this.labelMinutes.Text = "Minutes";
+			this.labelNumDepartures.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.labelNumDepartures.AutoSize = true;
+			this.labelNumDepartures.Location = new System.Drawing.Point(605, 33);
+			this.labelNumDepartures.Name = "labelNumDepartures";
+			this.labelNumDepartures.Size = new System.Drawing.Size(96, 16);
+			this.labelNumDepartures.TabIndex = 0;
+			this.labelNumDepartures.Text = "Departures:";
 			// 
-			// numericUpDown1
+			// tbLongestQueue
 			// 
-			this.numericUpDown1.Location = new System.Drawing.Point(573, 153);
-			this.numericUpDown1.Maximum = new decimal(new int[] {
-            59,
-            0,
-            0,
-            0});
-			this.numericUpDown1.Name = "numericUpDown1";
-			this.numericUpDown1.Size = new System.Drawing.Size(54, 27);
-			this.numericUpDown1.TabIndex = 8;
-			this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-			this.numericUpDown1.Value = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
+			this.tbLongestQueue.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.tbLongestQueue.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.tbLongestQueue.ForeColor = System.Drawing.Color.DodgerBlue;
+			this.tbLongestQueue.Location = new System.Drawing.Point(416, 4);
+			this.tbLongestQueue.Name = "tbLongestQueue";
+			this.tbLongestQueue.ReadOnly = true;
+			this.tbLongestQueue.Size = new System.Drawing.Size(63, 22);
+			this.tbLongestQueue.TabIndex = 1;
+			this.tbLongestQueue.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
-			// labelSeconds
+			// tbNumEvents
 			// 
-			this.labelSeconds.AutoSize = true;
-			this.labelSeconds.Location = new System.Drawing.Point(633, 157);
-			this.labelSeconds.Name = "labelSeconds";
-			this.labelSeconds.Size = new System.Drawing.Size(62, 19);
-			this.labelSeconds.TabIndex = 9;
-			this.labelSeconds.Text = "Seconds";
+			this.tbNumEvents.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.tbNumEvents.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.tbNumEvents.ForeColor = System.Drawing.Color.DodgerBlue;
+			this.tbNumEvents.Location = new System.Drawing.Point(416, 30);
+			this.tbNumEvents.Name = "tbNumEvents";
+			this.tbNumEvents.ReadOnly = true;
+			this.tbNumEvents.Size = new System.Drawing.Size(63, 22);
+			this.tbNumEvents.TabIndex = 1;
+			this.tbNumEvents.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
-			// btnSimulate
+			// tbNumArrivals
 			// 
-			this.btnSimulate.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnSimulate.Location = new System.Drawing.Point(170, 273);
-			this.btnSimulate.Name = "btnSimulate";
-			this.btnSimulate.Size = new System.Drawing.Size(157, 45);
-			this.btnSimulate.TabIndex = 10;
-			this.btnSimulate.Text = "Run Simulation";
-			this.btnSimulate.UseVisualStyleBackColor = true;
+			this.tbNumArrivals.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.tbNumArrivals.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.tbNumArrivals.ForeColor = System.Drawing.Color.DodgerBlue;
+			this.tbNumArrivals.Location = new System.Drawing.Point(712, 4);
+			this.tbNumArrivals.Name = "tbNumArrivals";
+			this.tbNumArrivals.ReadOnly = true;
+			this.tbNumArrivals.Size = new System.Drawing.Size(63, 22);
+			this.tbNumArrivals.TabIndex = 1;
+			this.tbNumArrivals.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
 			// 
-			// btnExit
+			// tbNumDepartures
 			// 
-			this.btnExit.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnExit.Location = new System.Drawing.Point(431, 273);
-			this.btnExit.Name = "btnExit";
-			this.btnExit.Size = new System.Drawing.Size(157, 45);
-			this.btnExit.TabIndex = 10;
-			this.btnExit.Text = "Exit";
-			this.btnExit.UseVisualStyleBackColor = true;
+			this.tbNumDepartures.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.tbNumDepartures.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.tbNumDepartures.ForeColor = System.Drawing.Color.DodgerBlue;
+			this.tbNumDepartures.Location = new System.Drawing.Point(712, 30);
+			this.tbNumDepartures.Name = "tbNumDepartures";
+			this.tbNumDepartures.ReadOnly = true;
+			this.tbNumDepartures.Size = new System.Drawing.Size(63, 22);
+			this.tbNumDepartures.TabIndex = 1;
+			this.tbNumDepartures.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			// 
+			// labelMinWait
+			// 
+			this.labelMinWait.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.labelMinWait.AutoSize = true;
+			this.labelMinWait.Location = new System.Drawing.Point(233, 59);
+			this.labelMinWait.Name = "labelMinWait";
+			this.labelMinWait.Size = new System.Drawing.Size(176, 16);
+			this.labelMinWait.TabIndex = 0;
+			this.labelMinWait.Text = "Minimum Service Time:";
+			this.labelMinWait.Visible = false;
+			// 
+			// tbMinWait
+			// 
+			this.tbMinWait.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.tbMinWait.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.tbMinWait.ForeColor = System.Drawing.Color.DodgerBlue;
+			this.tbMinWait.Location = new System.Drawing.Point(416, 56);
+			this.tbMinWait.Name = "tbMinWait";
+			this.tbMinWait.ReadOnly = true;
+			this.tbMinWait.Size = new System.Drawing.Size(63, 22);
+			this.tbMinWait.TabIndex = 1;
+			this.tbMinWait.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.tbMinWait.Visible = false;
+			// 
+			// labelMaxWait
+			// 
+			this.labelMaxWait.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.labelMaxWait.AutoSize = true;
+			this.labelMaxWait.Location = new System.Drawing.Point(525, 59);
+			this.labelMaxWait.Name = "labelMaxWait";
+			this.labelMaxWait.Size = new System.Drawing.Size(176, 16);
+			this.labelMaxWait.TabIndex = 0;
+			this.labelMaxWait.Text = "Maximum Service Time:";
+			this.labelMaxWait.Visible = false;
+			// 
+			// textBox1
+			// 
+			this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.textBox1.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.textBox1.ForeColor = System.Drawing.Color.DodgerBlue;
+			this.textBox1.Location = new System.Drawing.Point(712, 56);
+			this.textBox1.Name = "textBox1";
+			this.textBox1.ReadOnly = true;
+			this.textBox1.Size = new System.Drawing.Size(63, 22);
+			this.textBox1.TabIndex = 1;
+			this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+			this.textBox1.Visible = false;
+			// 
+			// labelAvgWait
+			// 
+			this.labelAvgWait.Anchor = System.Windows.Forms.AnchorStyles.Top;
+			this.labelAvgWait.AutoSize = true;
+			this.labelAvgWait.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.labelAvgWait.ForeColor = System.Drawing.Color.DodgerBlue;
+			this.labelAvgWait.Location = new System.Drawing.Point(232, 83);
+			this.labelAvgWait.Name = "labelAvgWait";
+			this.labelAvgWait.Size = new System.Drawing.Size(448, 16);
+			this.labelAvgWait.TabIndex = 0;
+			this.labelAvgWait.Text = "The average service time for 1000 Registrants was 00:00";
+			this.labelAvgWait.Visible = false;
 			// 
 			// SimulationForm
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(759, 339);
-			this.Controls.Add(this.btnExit);
-			this.Controls.Add(this.btnSimulate);
-			this.Controls.Add(this.labelSeconds);
-			this.Controls.Add(this.labelMinutes);
-			this.Controls.Add(this.numericUpDown1);
-			this.Controls.Add(this.numericUpDownMin);
-			this.Controls.Add(this.dateTimePickerClose);
-			this.Controls.Add(this.dateTimePickerOpen);
-			this.Controls.Add(this.labelTitle);
-			this.Controls.Add(this.tbNumWindows);
-			this.Controls.Add(this.tbExpNumRegistrants);
-			this.Controls.Add(this.labelExpNumRegistrants);
-			this.Controls.Add(this.labelAvgWaitTime);
-			this.Controls.Add(this.labelNumWindows);
-			this.Controls.Add(this.labelClosingTime);
-			this.Controls.Add(this.labelOpeningTime);
-			this.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.ClientSize = new System.Drawing.Size(912, 458);
+			this.Controls.Add(this.panelSimulation);
+			this.Controls.Add(this.panelStats);
+			this.Font = new System.Drawing.Font("Courier New", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.Name = "SimulationForm";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Convention Registration Simulation";
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDownMin)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+			this.panelSimulation.ResumeLayout(false);
+			this.panelSimulation.PerformLayout();
+			this.panelStats.ResumeLayout(false);
+			this.panelStats.PerformLayout();
+			this.panelTitle.ResumeLayout(false);
+			this.panelTitle.PerformLayout();
 			this.ResumeLayout(false);
-			this.PerformLayout();
 
 		}
 
 		#endregion
 
-		private System.Windows.Forms.Label labelOpeningTime;
-		private System.Windows.Forms.Label labelClosingTime;
-		private System.Windows.Forms.Label labelExpNumRegistrants;
-		private System.Windows.Forms.Label labelNumWindows;
-		private System.Windows.Forms.Label labelAvgWaitTime;
-		private System.Windows.Forms.TextBox tbExpNumRegistrants;
-		private System.Windows.Forms.TextBox tbNumWindows;
+		private System.Windows.Forms.Panel panelSimulation;
+		private System.Windows.Forms.TextBox tbSimulationOutput;
+		private System.Windows.Forms.Panel panelStats;
+		private System.Windows.Forms.Panel panelTitle;
 		private System.Windows.Forms.Label labelTitle;
-		private System.Windows.Forms.DateTimePicker dateTimePickerOpen;
-		private System.Windows.Forms.DateTimePicker dateTimePickerClose;
-		private System.Windows.Forms.NumericUpDown numericUpDownMin;
-		private System.Windows.Forms.Label labelMinutes;
-		private System.Windows.Forms.NumericUpDown numericUpDown1;
-		private System.Windows.Forms.Label labelSeconds;
-		private System.Windows.Forms.Button btnSimulate;
-		private System.Windows.Forms.Button btnExit;
+		private System.Windows.Forms.Label labelLongestQueue;
+		private System.Windows.Forms.Label labelNumDepartures;
+		private System.Windows.Forms.Label labelNumArrivals;
+		private System.Windows.Forms.Label labelNumEvents;
+		private System.Windows.Forms.TextBox tbLongestQueue;
+		private System.Windows.Forms.TextBox tbNumDepartures;
+		private System.Windows.Forms.TextBox tbNumArrivals;
+		private System.Windows.Forms.TextBox tbNumEvents;
+		private System.Windows.Forms.TextBox tbMinWait;
+		private System.Windows.Forms.Label labelMinWait;
+		private System.Windows.Forms.TextBox textBox1;
+		private System.Windows.Forms.Label labelMaxWait;
+		private System.Windows.Forms.Label labelAvgWait;
 	}
 }
-
