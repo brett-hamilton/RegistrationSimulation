@@ -19,8 +19,12 @@ using System.Windows.Forms;
 
 namespace RegistrationSimulation
 {
+	/// <summary>
+	/// Launches the program, handling the form displays
+	/// </summary>
 	public static class SimulationDriver
 	{
+		#region Main
 		/// <summary>
 		/// The main entry point for the application.
 		/// </summary>
@@ -29,7 +33,9 @@ namespace RegistrationSimulation
 		{
 			Application.EnableVisualStyles ( );
 			Application.SetCompatibleTextRenderingDefault (false);
+			Application.Run (new SplashForm ( ));
 			Application.Run (new SettingsForm ( ));
 		} // end Main
+		#endregion
 	} // end SimulationDriver
 }

@@ -35,7 +35,15 @@ namespace RegistrationSimulation
 	public class Simulation
 	{
 		#region Properties and Fields
-		private Random R	= new Random ( );		// Used to generate random numbers
+		private Random R	= new Random ( );       // Used to generate random numbers
+
+		/// <summary>
+		/// Gets or sets a value indicating whether this <see cref="Simulation"/> is complete
+		/// </summary>
+		/// <value>
+		///   <c>true</c> if simulation complete; otherwise, <c>false</c>.
+		/// </value>
+		public bool Complete { get; set; }
 
 		/// <summary>
 		/// Gets or sets the number of registrants
@@ -129,8 +137,11 @@ namespace RegistrationSimulation
 			TotalArrivals		= 0;
 			TotalDepartures		= 0;
 			TotalEvents			= 0;
+			Complete			= false;
 			StartTime			= DateTime.Now;
 			EndTime				= DateTime.Now;
+			ShortestWait		= new TimeSpan (1, 0, 0);
+			LongestWait			= new TimeSpan (0, 0, 0);
 			AvgRegistrationTime	= new TimeSpan (0, 0, 0);
 			WaitLines			= new List<Queue<Registrant>> ( );
 			EventPQ				= new PriorityQueue<Event> ( );
@@ -139,17 +150,22 @@ namespace RegistrationSimulation
 		public Simulation (int expRegistrants, int numWindows, DateTime start, DateTime end,
 			TimeSpan avgRegistrationTime)
 		{
+			Complete			= false;
 			NumRegistrants		= Poisson (expRegistrants);
 			NumWindows			= numWindows;
 			StartTime			= start;
 			EndTime				= end;
 			AvgRegistrationTime = avgRegistrationTime;
 
+			ShortestWait	= new TimeSpan (1, 0, 0);
+			LongestWait		= new TimeSpan (0, 0, 0);
 			LargestQueue	= 0;
 			TotalArrivals	= 0;
 			TotalDepartures = 0;
 			TotalEvents		= 0;
 
+			WaitLines	= new List<Queue<Registrant>> ( );
+			EventPQ		= new PriorityQueue<Event> ( );
 			SetupSimulation ( );
 		} // end Simulation
 		#endregion
@@ -180,8 +196,7 @@ namespace RegistrationSimulation
 			for (int registrant = 1; registrant <= NumRegistrants; registrant++)
 			{
 				// Generate random amount of time between 0 and registration open period
-				start = new TimeSpan (R.Next (timeOpen.Hours), R.Next (timeOpen.Minutes), 
-					R.Next (timeOpen.Seconds));
+				start = new TimeSpan (0, 0, R.Next ((int) timeOpen.TotalSeconds));
 
 				// Create arrival event
 				Event newEvent = new Event (EventType.ARRIVAL, (StartTime + start));
@@ -202,7 +217,7 @@ namespace RegistrationSimulation
 		{
 			// generates a random interval for how long the person takes, with a minimum of 1 minute
 			// and 30 seconds
-			TimeSpan wait = new TimeSpan (0, (int) (1.5 + NegExp (AvgRegistrationTime.TotalMinutes)), 0);
+			TimeSpan wait = new TimeSpan (0, 0, (int) (90 + NegExp (AvgRegistrationTime.TotalSeconds - 90)));
 
 			// Creates departure event based on the time interval plus the time we are currently
 			// at in the Priority Queue
@@ -226,10 +241,16 @@ namespace RegistrationSimulation
 		}// end GenerateDepartureEvents
 		#endregion
 
-		public void RunSimulation( )
+		public void RunSimulation ( )
 		{
 			Queue<Registrant> shortestLine	= null;
 			Queue<Registrant> currentLine	= null;
+
+			if (EventPQ.IsEmpty ( ))		// Indicates simulation is finished running
+			{
+				Complete = true;
+				return;
+			}
 
 
 			if (EventPQ.Peek ( ).Type == EventType.ARRIVAL)	// If the event is an arrival
@@ -256,10 +277,13 @@ namespace RegistrationSimulation
 				// Get the line that registrant is about to leave
 				for (int i = 0; i < WaitLines.Count; i++)
 				{
-					if (WaitLines[i].Peek ( ).ID == EventPQ.Peek ( ).Registrant.ID)
+					if (WaitLines[i].Count > 0)
 					{
-						currentLine = WaitLines[i];
-						break;
+						if (WaitLines[i].Peek ( ).ID == EventPQ.Peek ( ).Registrant.ID)
+						{
+							currentLine = WaitLines[i];
+							break;
+						}
 					}
 				}
 
@@ -271,13 +295,16 @@ namespace RegistrationSimulation
 				// If the wait line is not empty, generate a departure event for the next registrant
 				if (currentLine.Count > 0)
 					GenerateDepartureEvent (currentLine.Peek ( ));
+
+				// Departure event handled; remove from Priority Queue
+				EventPQ.Dequeue ( );
 			}
 		} // end RunSimulation
 
 		/// <summary>
-		/// Finds the shortest line.
+		/// Finds the shortest line
 		/// </summary>
-		/// <returns></returns>
+		/// <returns>The shortest wait line</returns>
 		private Queue<Registrant> FindShortestLine ( )
 		{
 			Queue<Registrant> shortestLine = WaitLines[0];
@@ -320,7 +347,24 @@ namespace RegistrationSimulation
 		#region To String
 		public override string ToString ( )
 		{
-			return base.ToString ( );
+			string display = string.Empty;
+
+			for (int i = 0; i < WaitLines.Count; i++)
+			{
+				display += $"Window {(i + 1).ToString ( ).PadLeft (3)}: ";
+
+				if (WaitLines[i].Count > 0)
+				{
+					display += $"{WaitLines[i].Peek ( )}";
+
+					for (int n = 0; n < WaitLines[i].Count - 1; n++)
+						display += "| #### ";
+				}
+
+				display += "\r\n";
+			}
+
+			return display;
 		}
 		#endregion
 

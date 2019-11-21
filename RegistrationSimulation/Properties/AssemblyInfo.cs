@@ -5,12 +5,13 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle ("RegistrationSimulation")]
-[assembly: AssemblyDescription ("")]
+[assembly: AssemblyTitle ("Convention Registration Simulation")]
+[assembly: AssemblyDescription ("This program simulates a registration event for a " +
+	"convention. Users may adjust the parameters or keep the recommended defaults.")]
 [assembly: AssemblyConfiguration ("")]
-[assembly: AssemblyCompany ("")]
+[assembly: AssemblyCompany ("Author: Brett Hamilton and Micah DePetro")]
 [assembly: AssemblyProduct ("RegistrationSimulation")]
-[assembly: AssemblyCopyright ("Copyright ©  2019")]
+[assembly: AssemblyCopyright ("Copyright © Brett Hamilton & Micah DePetro 2019")]
 [assembly: AssemblyTrademark ("")]
 [assembly: AssemblyCulture ("")]
 
@@ -32,5 +33,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion ("1.0.0.0")]
-[assembly: AssemblyFileVersion ("1.0.0.0")]
+[assembly: AssemblyVersion ("1.6.24.0")]
+[assembly: AssemblyFileVersion ("1.6.24.0")]
